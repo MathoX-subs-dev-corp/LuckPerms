@@ -46,9 +46,17 @@ subprojects {
         tagInfo = tagInfo.toString()
 
         if (!tagInfo.contains('-')) {
-            return 0
+            // get shortened commit hash
+            def commitInfo = new ByteArrayOutputStream()
+            exec {
+                commandLine 'git', 'rev-parse', '--short', 'HEAD'
+                standardOutput commitInfo
+            }
+            commitInfo = commitInfo.toString()
+            return '0.' + commitInfo.substring(0, commitInfo.indexOf('\n'))
         }
-        return tagInfo.split("-")[1]
+        def splitTagInfo = tagInfo.split("-")
+        return splitTagInfo[1] + '.' + splitTagInfo[2].substring(1, splitTagInfo[2].indexOf('\n'))
     }
 
     project.ext.majorVersion = '5'
@@ -69,5 +77,6 @@ subprojects {
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url 'https://repo.lucko.me/' }
         maven { url 'https://libraries.minecraft.net/' }
+        maven { url 'https://repo.roro.ovh/repository/global/' }
     }
 }

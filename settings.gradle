@@ -21,14 +21,14 @@ include (
         'api',
         'common',
         'common:loader-utils',
-        'bukkit',
+        /*'bukkit',
         'bukkit:loader',
         'bukkit-legacy',
         'bukkit-legacy:loader',
         'bungee',
-        'bungee:loader',
+        'bungee:loader',*/
         'fabric',
-        'forge',
+        /*'forge',
         'forge:loader',
         'forge:forge-api',
         'nukkit',
@@ -40,5 +40,5 @@ include (
         'velocity',
         'standalone',
         'standalone:loader',
-        'standalone:app'
+        'standalone:app'*/
 )
