@@ -129,6 +129,7 @@ public abstract class AbstractLuckPermsPlugin implements LuckPermsPlugin {
 
         // load some utilities early
         this.permissionRegistry = new PermissionRegistry(getBootstrap().getScheduler());
+        this.verboseHandler = new VerboseHandler(getBootstrap().getScheduler());
     }
 
     public final void enable() {
@@ -139,7 +140,6 @@ public abstract class AbstractLuckPermsPlugin implements LuckPermsPlugin {
         Message.STARTUP_BANNER.send(getConsoleSender(), getBootstrap());
 
         // load some utilities early
-        this.verboseHandler = new VerboseHandler(getBootstrap().getScheduler());
         this.logDispatcher = new LogDispatcher(this);
 
         // load configuration
